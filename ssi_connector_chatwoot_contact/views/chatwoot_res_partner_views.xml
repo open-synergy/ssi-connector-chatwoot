@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- chatwoot.res.partner list view -->
+    <record id="view_chatwoot_res_partner_tree" model="ir.ui.view">
+        <field name="name">chatwoot.res.partner.tree</field>
+        <field name="model">chatwoot.res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Chatwoot Contact Bindings">
+                <field name="name" />
+                <field name="email" />
+                <field name="backend_id" />
+                <field name="chatwoot_id" />
+                <field name="sync_date" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- chatwoot.res.partner form view -->
+    <record id="view_chatwoot_res_partner_form" model="ir.ui.view">
+        <field name="name">chatwoot.res.partner.form</field>
+        <field name="model">chatwoot.res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Chatwoot Contact Binding">
+                <header>
+                    <button
+                        name="export_record"
+                        string="Export to Chatwoot"
+                        type="object"
+                        class="oe_highlight"
+                        groups="connector.group_connector_manager"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Odoo">
+                            <field name="odoo_id" />
+                            <field name="backend_id" />
+                        </group>
+                        <group string="Chatwoot">
+                            <field name="chatwoot_id" />
+                            <field name="sync_date" />
+                        </group>
+                    </group>
+                    <group string="Partner Info" readonly="1">
+                        <field name="name" />
+                        <field name="email" />
+                        <field name="phone" />
+                        <field name="mobile" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_chatwoot_res_partner" model="ir.actions.act_window">
+        <field name="name">Chatwoot Contact Bindings</field>
+        <field name="res_model">chatwoot.res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu entry under Chatwoot > Contacts -->
+    <menuitem
+        id="menu_chatwoot_contacts"
+        name="Contacts"
+        parent="ssi_connector_chatwoot.menu_chatwoot_root"
+        action="action_chatwoot_res_partner"
+        sequence="10"
+        groups="connector.group_connector_manager"
+    />
+</odoo>
