@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Add "Sync to Chatwoot" field and bindings notebook tab to res.partner form -->
+    <record id="view_partner_form_chatwoot" model="ir.ui.view">
+        <field name="name">res.partner.form.chatwoot</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <!-- Add checkbox near the top of the form -->
+            <xpath expr="//field[@name='website']" position="after">
+                <field
+                    name="sync_to_chatwoot"
+                    groups="connector.group_connector_manager"
+                />
+            </xpath>
+
+            <!-- Add a Chatwoot tab in the chatter/notebook area -->
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="Chatwoot"
+                    name="chatwoot_bindings"
+                    groups="connector.group_connector_manager"
+                >
+                    <group>
+                        <field name="sync_to_chatwoot" />
+                    </group>
+                    <field name="chatwoot_bind_ids" nolabel="1">
+                        <tree string="Chatwoot Bindings" editable="bottom">
+                            <field name="backend_id" />
+                            <field name="chatwoot_id" readonly="1" />
+                            <field name="sync_date" readonly="1" />
+                        </tree>
+                    </field>
+                    <div attrs="{'invisible': [('sync_to_chatwoot', '=', False)]}">
+                        <button
+                            name="action_force_export_to_chatwoot"
+                            string="Force Export to Chatwoot"
+                            type="object"
+                            class="btn-secondary"
+                            groups="connector.group_connector_manager"
+                        />
+                    </div>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

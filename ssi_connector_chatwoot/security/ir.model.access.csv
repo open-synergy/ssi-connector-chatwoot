@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_chatwoot_backend_manager,chatwoot.backend manager,model_chatwoot_backend,connector.group_connector_manager,1,1,1,1
+access_chatwoot_backend_user,chatwoot.backend user,model_chatwoot_backend,base.group_user,1,0,0,0
