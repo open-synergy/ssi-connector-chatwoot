@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Main menu: Connectors / Chatwoot -->
+    <menuitem
+        id="menu_chatwoot_root"
+        name="Chatwoot"
+        groups="connector.group_connector_manager"
+        sequence="50"
+    />
+
+    <menuitem
+        id="menu_chatwoot_configuration"
+        name="Configuration"
+        parent="menu_chatwoot_root"
+        sequence="100"
+    />
+
+    <menuitem
+        id="menu_chatwoot_backend"
+        name="Backends"
+        parent="menu_chatwoot_configuration"
+        action="action_chatwoot_backend"
+        sequence="10"
+    />
+</odoo>
