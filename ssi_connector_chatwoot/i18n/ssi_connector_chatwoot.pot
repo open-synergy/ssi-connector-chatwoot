@@ -1,0 +1,146 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ssi_connector_chatwoot
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__api_token
+msgid "API Token (User)"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__account_id
+msgid "Account ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__active
+msgid "Active"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_form
+msgid "Archived"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_form
+msgid "Backend Name"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.ui.menu,name:ssi_connector_chatwoot.menu_chatwoot_backend
+msgid "Backends"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.ui.menu,name:ssi_connector_chatwoot.menu_chatwoot_root
+msgid "Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model,name:ssi_connector_chatwoot.model_chatwoot_backend
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_form
+msgid "Chatwoot Backend"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.actions.act_window,name:ssi_connector_chatwoot.action_chatwoot_backend
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_tree
+msgid "Chatwoot Backends"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,help:ssi_connector_chatwoot.field_chatwoot_backend__account_id
+msgid "Chatwoot account numeric ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,help:ssi_connector_chatwoot.field_chatwoot_backend__url
+msgid "Chatwoot instance URL, e.g. https://app.chatwoot.com"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__company_id
+msgid "Company"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.ui.menu,name:ssi_connector_chatwoot.menu_chatwoot_configuration
+msgid "Configuration"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_form
+msgid "Connection"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_form
+msgid "General"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__id
+msgid "ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__name
+msgid "Name"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot.view_chatwoot_backend_form
+msgid "Test Connection"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot.field_chatwoot_backend__url
+msgid "URL"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.model.fields,help:ssi_connector_chatwoot.field_chatwoot_backend__api_token
+msgid "User access token from Chatwoot profile settings"
+msgstr ""
