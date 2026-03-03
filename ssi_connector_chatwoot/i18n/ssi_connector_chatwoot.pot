@@ -44,6 +44,11 @@ msgid "Backends"
 msgstr ""
 
 #. module: ssi_connector_chatwoot
+#: model:ir.ui.menu,name:ssi_connector_chatwoot.menu_chatwoot_binding
+msgid "Bindings"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
 #: model:ir.ui.menu,name:ssi_connector_chatwoot.menu_chatwoot_root
 msgid "Chatwoot"
 msgstr ""
@@ -143,4 +148,9 @@ msgstr ""
 #. module: ssi_connector_chatwoot
 #: model:ir.model.fields,help:ssi_connector_chatwoot.field_chatwoot_backend__api_token
 msgid "User access token from Chatwoot profile settings"
+msgstr ""
+
+#. module: ssi_connector_chatwoot
+#: model:ir.ui.menu,name:ssi_connector_chatwoot.menu_chatwoot_webhook_queue
+msgid "Webhook Queues"
 msgstr ""
