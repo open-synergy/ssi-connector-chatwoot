@@ -10,11 +10,12 @@
     "license": "AGPL-3",
     "depends": [
         "connector",
+        "ssi_connector",
     ],
     "data": [
         "security/ir.model.access.csv",
+        "menu.xml",
         "views/chatwoot_backend_views.xml",
-        "views/menu.xml",
     ],
     "installable": True,
 }
