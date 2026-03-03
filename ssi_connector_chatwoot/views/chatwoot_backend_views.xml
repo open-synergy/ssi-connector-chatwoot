@@ -62,4 +62,13 @@
         <field name="res_model">chatwoot.backend</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <menuitem
+        id="menu_chatwoot_backend"
+        name="Backends"
+        parent="menu_chatwoot_configuration"
+        action="action_chatwoot_backend"
+        groups="connector.group_connector_manager"
+        sequence="10"
+    />
 </odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+        id="menu_chatwoot_root"
+        name="Chatwoot"
+        parent="ssi_connector.menu_root_connector"
+        sequence="50"
+    />
+
+    <menuitem
+        id="menu_chatwoot_webhook_queue"
+        name="Webhook Queues"
+        parent="menu_chatwoot_root"
+        sequence="100"
+    />
+
+    <menuitem
+        id="menu_chatwoot_binding"
+        name="Bindings"
+        parent="menu_chatwoot_root"
+        sequence="200"
+    />
+
+    <menuitem
+        id="menu_chatwoot_configuration"
+        name="Configuration"
+        parent="menu_chatwoot_root"
+        sequence="999"
+    />
+
+
+</odoo>
