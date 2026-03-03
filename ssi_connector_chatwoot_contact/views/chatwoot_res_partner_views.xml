@@ -63,7 +63,7 @@
     <menuitem
         id="menu_chatwoot_contacts"
         name="Contacts"
-        parent="ssi_connector_chatwoot.menu_chatwoot_root"
+        parent="ssi_connector_chatwoot.menu_chatwoot_binding"
         action="action_chatwoot_res_partner"
         sequence="10"
         groups="connector.group_connector_manager"
