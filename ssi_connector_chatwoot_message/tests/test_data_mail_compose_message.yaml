@@ -1,0 +1,77 @@
+setup:
+  steps:
+    - step: "Create Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "backend"
+      values:
+        name: "CI Compose Backend"
+        url: "https://chatwoot.example.com"
+        account_id: 1
+        api_token: "test-token"
+
+    - step: "Create inbox that allows outgoing messages"
+      action: "create"
+      model: "chatwoot.inbox"
+      save_as: "inbox"
+      values:
+        name: "CI Compose Inbox"
+        backend_id: "REC: backend.id"
+        chatwoot_id: "13"
+        allow_outgoing: true
+
+    - step: "Create the partner that holds the document"
+      action: "create"
+      model: "res.partner"
+      save_as: "document"
+      values:
+        name: "CI Compose Document"
+
+    - step: "Create the customer that receives the message"
+      action: "create"
+      model: "res.partner"
+      save_as: "customer"
+      values:
+        name: "CI Compose Customer"
+        email: "ci.compose.customer@example.com"
+
+scenarios:
+  - name: "Reject Chatwoot delivery without inbox"
+    steps:
+      - step: "Composer via Chatwoot without inbox is rejected"
+        action: "create"
+        model: "mail.compose.message"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "No Chatwoot inbox is selected"
+        values:
+          composition_mode: "comment"
+          model: "res.partner"
+          res_id: "REC: document.id"
+          subject: "CI Compose Subject One"
+          send_via: "chatwoot"
+
+  - name: "Composer via Chatwoot notifies the recipients through Chatwoot"
+    steps:
+      - step: "Send the message via Chatwoot with the chosen inbox"
+        action: "wizard"
+        model: "mail.compose.message"
+        target: "document"
+        values:
+          composition_mode: "comment"
+          subject: "CI Compose Subject Two"
+          body: "<p>CI Compose Body</p>"
+          partner_ids: [[6, 0, ["REC: customer.id"]]]
+          send_via: "chatwoot"
+          chatwoot_inbox_id: "REC: inbox.id"
+        method: "send_mail"
+
+      - step: "The customer has a Chatwoot notification"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "chatwoot"]
+          - ["res_partner_id", "=", "REC: customer.id"]
+          - ["mail_message_id.subject", "=", "CI Compose Subject Two"]
+        save_as: "chatwoot_notification"
+        expect_count: 1

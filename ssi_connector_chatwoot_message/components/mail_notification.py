@@ -37,15 +37,46 @@ class ChatwootMailNotificationAdapter(Component):
         """Post a message in a Chatwoot conversation.
 
         Calls ``POST /api/v1/accounts/{id}/conversations/{cid}/messages``.
+        A message without attachment is sent as JSON; a message with
+        attachments is sent as ``multipart/form-data`` with one
+        ``attachments[]`` part per file.
 
         :param conversation_id: Chatwoot conversation numeric ID
-        :param data: dict with ``content`` and ``message_type``
+        :param data: dict with ``content``, ``message_type`` and
+            optionally ``attachment_ids`` (``ir.attachment`` IDs)
         :return: response dict (contains the message ``id``)
         :rtype: dict
         """
-        return self._request(
-            "post", "conversations/{}/messages".format(conversation_id), json=data
+        path = "conversations/{}/messages".format(conversation_id)
+        payload = dict(data)
+        attachments = (
+            self.env["ir.attachment"].sudo().browse(payload.pop("attachment_ids", []))
         )
+        if not attachments:
+            return self._request("post", path, json=payload)
+        # The multipart boundary is part of the Content-Type, which
+        # ``requests`` must build itself.
+        headers = {
+            key: value
+            for key, value in self._headers.items()
+            if key.lower() != "content-type"
+        }
+        form = {
+            key: str(value).lower() if isinstance(value, bool) else value
+            for key, value in payload.items()
+        }
+        files = [
+            (
+                "attachments[]",
+                (
+                    attachment.name,
+                    attachment.raw or b"",
+                    attachment.mimetype or "application/octet-stream",
+                ),
+            )
+            for attachment in attachments
+        ]
+        return self._request("post", path, data=form, files=files, headers=headers)
 
 
 class ChatwootMailNotificationBinder(Component):
@@ -93,6 +124,17 @@ class ChatwootMailNotificationExportMapper(Component):
         :return: dict with the ``message_type`` key
         """
         return {"message_type": "outgoing", "private": False}
+
+    @mapping
+    def attachment_ids(self, record):
+        """Map the attachments of the message.
+
+        :param record: the ``chatwoot.mail.notification`` binding
+        :return: dict with the ``attachment_ids`` key, the IDs of the
+            ``ir.attachment`` records sent along with the message
+        """
+        message = record.odoo_id.mail_message_id.sudo()
+        return {"attachment_ids": message.attachment_ids.ids}
 
     def _get_record_link(self, message):
         """Build the absolute link to the document of the message.

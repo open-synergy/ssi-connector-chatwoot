@@ -22,6 +22,12 @@ Partner
 * `Set Chatwoot Notification (Contact)
   <docs/res_partner/01-set-chatwoot-notification.html>`_
 
+Composer
+--------
+
+* `Send Message via Chatwoot (Composer)
+  <docs/mail_compose_message/01-send-via-chatwoot.html>`_
+
 Installation
 ============
 
