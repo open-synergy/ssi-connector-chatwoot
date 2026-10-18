@@ -14,8 +14,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_connector_chatwoot_contact
-#: model:ir.model.constraint,message:ssi_connector_chatwoot_contact.constraint_chatwoot_res_partner_chatwoot_partner_uniq
-msgid "A Chatwoot binding already exists for this partner and backend."
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_account_payable_id
+msgid "Account Payable"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_account_receivable_id
+msgid "Account Receivable"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -59,6 +64,11 @@ msgid "Address Type"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__age
+msgid "Age"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__lang
 msgid ""
 "All the emails and documents sent to this contact will be translated in this"
@@ -68,6 +78,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__message_attachment_count
 msgid "Attachment Count"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__bank_account_count
+msgid "Bank"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -81,8 +96,38 @@ msgid "Barcode"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__birth_city
+msgid "Birth City"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__birth_country_id
+msgid "Birth country"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__birth_state_id
+msgid "Birth state"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__birthdate_date
+msgid "Birthdate"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__is_blacklisted
 msgid "Blacklist"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__blood_type
+msgid "Blood Type (ABO)"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__blood_type_rhesus
+msgid "Blood Type (Rh)"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -104,6 +149,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__backend_id
 msgid "Chatwoot Backend"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_partner_form_chatwoot
+msgid "Chatwoot Binding"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -142,6 +192,19 @@ msgid "Check this box if this contact is an Employee."
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__children_ids
+msgid "Children"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__children_ids
+msgid ""
+"Children of this contact. Only individual contacts can be selected. "
+"Many2many is used because a single contact record cannot hold a dedicated "
+"parent field for both father and mother."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__city
 msgid "City"
 msgstr ""
@@ -154,6 +217,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__commercial_partner_id
 msgid "Commercial Entity"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__ref_company_ids
+msgid "Companies that refers to partner"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -193,6 +261,19 @@ msgid "Contacts"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__ward_ids
+msgid ""
+"Contacts that have this contact set as their legal guardian. This is the "
+"automatic inverse of the Guardian field and is maintained entirely by the "
+"ORM."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__payment_token_count
+msgid "Count Payment Token"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__message_bounce
 msgid "Counter of the number of bounced emails for this contact"
 msgstr ""
@@ -218,8 +299,28 @@ msgid "Credit Limit"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_payment_term_id
+msgid "Customer Payment Terms"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__customer_rank
+msgid "Customer Rank"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__date
 msgid "Date"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__trust
+msgid "Degree of trust you have in this debtor"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -247,8 +348,40 @@ msgid "Employee"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__entity_type_id
+msgid "Entity Type"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__ethnicity_id
+msgid "Ethnicity"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_res_partner_form
 msgid "Export to Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__nickname
+msgid ""
+"Familiar or informal name the individual contact is commonly called by, as "
+"opposed to their official name."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__father_id
+msgid "Father"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__father_id
+msgid "Father of this contact. Only individual contacts can be selected."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_account_position_id
+msgid "Fiscal Position"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -287,6 +420,11 @@ msgid "Formatted Email"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__gender
+msgid "Gender"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__partner_latitude
 msgid "Geo Latitude"
 msgstr ""
@@ -294,6 +432,16 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__partner_longitude
 msgid "Geo Longitude"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__guardian_id
+msgid "Guardian"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__has_unreconciled_entries
+msgid "Has Unreconciled Entries"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -375,10 +523,20 @@ msgid "Industry"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__invoice_warn
+msgid "Invoice"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__type
 msgid ""
 "Invoice & Delivery addresses are used in sales orders. Private addresses are"
 " only visible by authorized users."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__invoice_ids
+msgid "Invoices"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -394,6 +552,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__function
 msgid "Job Position"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__journal_item_count
+msgid "Journal Items"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -423,13 +586,42 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__last_time_entries_checked
+msgid ""
+"Last time the invoices & payments matching was performed for this partner. "
+"It is set either if there's not at least an unreconciled debit and an "
+"unreconciled credit or if you click the \"Done\" button."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__guardian_id
+msgid ""
+"Legal guardian of this contact. Only individual contacts can be selected."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__message_main_attachment_id
 msgid "Main Attachment"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__marital
+msgid "Marital Status"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__message_has_error
 msgid "Message Delivery error"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__invoice_warn_msg
+msgid "Message for Invoice"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -443,6 +635,16 @@ msgid "Mobile"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__mother_id
+msgid "Mother"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__mother_id
+msgid "Mother of this contact. Only individual contacts can be selected."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__my_activity_date_deadline
 msgid "My Activity Deadline"
 msgstr ""
@@ -450,6 +652,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__name
 msgid "Name"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__nationality_id
+msgid "Nationality"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -465,6 +672,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__activity_type_id
 msgid "Next Activity Type"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__nickname
+msgid "Nickname"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -508,6 +720,11 @@ msgid "Odoo"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__ownership_type_id
+msgid "Ownership Type"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__parent_name
 msgid "Parent name"
 msgstr ""
@@ -515,6 +732,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__odoo_id
 msgid "Partner"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__contract_ids
+msgid "Partner Contracts"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -528,8 +750,36 @@ msgid "Partner with same Tax ID"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__debit_limit
+msgid "Payable Limit"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_payment_method_id
+msgid "Payment Method"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__payment_token_ids
+msgid "Payment Tokens"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__phone
 msgid "Phone"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_payment_method_id
+msgid ""
+"Preferred payment method when paying this vendor. This is used to filter "
+"vendor bills by preferred payment method to register payments in mass. Use "
+"cases: create bank files for batch wires, check runs."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_product_pricelist
+msgid "Pricelist"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -543,6 +793,11 @@ msgid "Related Company"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__religion_id
+msgid "Religion"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__activity_user_id
 msgid "Responsible User"
 msgstr ""
@@ -550,6 +805,14 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__user_id
 msgid "Salesperson"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__invoice_warn
+msgid ""
+"Selecting the \"Warning\" option will notify user with the message, "
+"Selecting \"Blocking Message\" will throw an exception with the message and "
+"block the flow. The Message has to be written in the next field."
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -588,6 +851,29 @@ msgid "Signup URL"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__spouse_id
+msgid "Spouse"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__spouse_birthdate
+msgid "Spouse Birthdate"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__spouse_complete_name
+msgid "Spouse Complete Name"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__spouse_id
+msgid ""
+"Spouse of this contact, linked as a partner record. Only individual contacts"
+" can be selected. This does not replace or synchronize with Spouse Complete "
+"Name/Spouse Birthdate."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__state_id
 msgid "State"
 msgstr ""
@@ -609,6 +895,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__street2
 msgid "Street2"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__supplier_rank
+msgid "Supplier Rank"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -636,8 +927,35 @@ msgid ""
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_account_position_id
+msgid ""
+"The fiscal position determines the taxes/accounts used for this contact."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__user_id
 msgid "The internal user in charge of this contact."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__has_unreconciled_entries
+msgid ""
+"The partner has at least one unreconciled debit and credit since last time "
+"the invoices & payments matching was performed."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_account_payable_id
+msgid ""
+"This account will be used instead of the default one as the payable account "
+"for the current partner"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_account_receivable_id
+msgid ""
+"This account will be used instead of the default one as the receivable "
+"account for the current partner"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -645,6 +963,27 @@ msgstr ""
 msgid ""
 "This field is used to search on email address as the primary email field can"
 " contain more than strictly an email address."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_supplier_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for purchase "
+"orders and vendor bills"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for sales orders "
+"and customer invoices"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_product_pricelist
+msgid ""
+"This pricelist will be used, instead of the default one, for sales to the "
+"current partner"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -660,6 +999,31 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__title
 msgid "Title"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__total_invoiced
+msgid "Total Invoiced"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__debit
+msgid "Total Payable"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__credit
+msgid "Total Receivable"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__credit
+msgid "Total amount this customer owes you."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__debit
+msgid "Total amount you have to pay to this vendor."
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -688,8 +1052,33 @@ msgid "Users"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__currency_id
+msgid "Utility field to express amount currency"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__property_supplier_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__ward_ids
+msgid "Wards"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__website
 msgid "Website Link"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__website_message_ids
+msgid "Website communication history"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
