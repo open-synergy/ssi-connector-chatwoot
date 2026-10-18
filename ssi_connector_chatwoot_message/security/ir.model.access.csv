@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_chatwoot_conversation_manager,chatwoot.conversation manager,model_chatwoot_conversation,connector.group_connector_manager,1,1,1,1
+access_chatwoot_conversation_user,chatwoot.conversation user,model_chatwoot_conversation,base.group_user,1,0,0,0
+access_chatwoot_mail_notification_manager,chatwoot.mail.notification manager,model_chatwoot_mail_notification,connector.group_connector_manager,1,1,1,1
+access_chatwoot_mail_notification_user,chatwoot.mail.notification user,model_chatwoot_mail_notification,base.group_user,1,0,0,0
