@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Chatwoot notification preference of partners who are not users -->
+    <record id="view_partner_form_chatwoot_message" model="ir.ui.view">
+        <field name="name">res.partner.form.chatwoot.message</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Chatwoot Notification" name="chatwoot_notification">
+                    <group>
+                        <field name="chatwoot_notify" />
+                        <field
+                            name="chatwoot_inbox_id"
+                            options="{'no_create': True}"
+                            attrs="{'invisible': [('chatwoot_notify', '=', False)], 'required': [('chatwoot_notify', '=', True)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

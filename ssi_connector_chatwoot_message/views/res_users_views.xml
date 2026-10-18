@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Preferences form: the user picks the Chatwoot inbox -->
+    <record id="view_users_form_simple_modif_chatwoot_message" model="ir.ui.view">
+        <field name="name">res.users.preferences.form.chatwoot.message</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="mail.view_users_form_simple_modif_mail" />
+        <field name="arch" type="xml">
+            <field name="notification_type" position="after">
+                <field
+                    name="chatwoot_inbox_id"
+                    readonly="0"
+                    options="{'no_create': True, 'no_open': True}"
+                    attrs="{'invisible': [('notification_type', '!=', 'chatwoot')], 'required': [('notification_type', '=', 'chatwoot')]}"
+                />
+            </field>
+        </field>
+    </record>
+
+    <!-- User form: administrators can set the same preference -->
+    <record id="view_users_form_chatwoot_message" model="ir.ui.view">
+        <field name="name">res.users.form.chatwoot.message</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="mail.view_users_form_mail" />
+        <field name="arch" type="xml">
+            <field name="notification_type" position="after">
+                <field
+                    name="chatwoot_inbox_id"
+                    options="{'no_create': True}"
+                    attrs="{'invisible': [('notification_type', '!=', 'chatwoot')], 'required': [('notification_type', '=', 'chatwoot')]}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,159 @@
+setup:
+  steps:
+    - step: "Create Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "backend"
+      values:
+        name: "CI Message Partner Backend"
+        url: "https://chatwoot.example.com"
+        account_id: 1
+        api_token: "test-token"
+
+    - step: "Create inbox that allows outgoing messages"
+      action: "create"
+      model: "chatwoot.inbox"
+      save_as: "inbox"
+      values:
+        name: "CI Message Partner Inbox"
+        backend_id: "REC: backend.id"
+        chatwoot_id: "12"
+        allow_outgoing: true
+
+    - step: "Create the partner that holds the document"
+      action: "create"
+      model: "res.partner"
+      save_as: "document"
+      values:
+        name: "CI Message Partner Document"
+
+scenarios:
+  - name: "Notify via Chatwoot enables the contact sync"
+    steps:
+      - step: "Create partner notified via Chatwoot"
+        action: "create"
+        model: "res.partner"
+        save_as: "notified"
+        values:
+          name: "CI Notified Partner One"
+          chatwoot_notify: true
+          chatwoot_inbox_id: "REC: inbox.id"
+
+      - step: "The partner is flagged for sync"
+        action: "assert"
+        target: "notified"
+        asserts:
+          sync_to_chatwoot:
+            type: "value"
+            expected: true
+
+  - name: "Reject Notify via Chatwoot without inbox"
+    steps:
+      - step: "Partner notified via Chatwoot without inbox is rejected"
+        action: "create"
+        model: "res.partner"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "needs a Chatwoot inbox"
+        values:
+          name: "CI Notified Partner Two"
+          chatwoot_notify: true
+
+  - name: "Non-user partner is notified via Chatwoot"
+    steps:
+      - step: "Create partner notified via Chatwoot"
+        action: "create"
+        model: "res.partner"
+        save_as: "notified"
+        values:
+          name: "CI Notified Partner Three"
+          chatwoot_notify: true
+          chatwoot_inbox_id: "REC: inbox.id"
+
+      - step: "Follow the document"
+        action: "call"
+        target: "document"
+        method: "message_subscribe"
+        kwargs:
+          partner_ids:
+            - "REC: notified.id"
+
+      - step: "Post a comment on the document"
+        action: "call"
+        target: "document"
+        method: "message_post"
+        kwargs:
+          body: "CI comment for the Chatwoot follower"
+          message_type: "comment"
+          subtype_xmlid: "mail.mt_comment"
+
+      - step: "A Chatwoot notification is created for the partner"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "chatwoot"]
+          - ["res_partner_id", "=", "REC: notified.id"]
+        save_as: "chatwoot_notification"
+        expect_count: 1
+
+      - step: "No email is addressed to the partner"
+        action: "search"
+        model: "mail.mail"
+        domain:
+          - ["recipient_ids", "in", ["REC: notified.id"]]
+        save_as: "emails"
+        expect_count: 0
+
+      - step: "No email notification is created for the partner"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "email"]
+          - ["res_partner_id", "=", "REC: notified.id"]
+        save_as: "email_notification"
+        expect_count: 0
+
+  - name: "Partner without Notify via Chatwoot stays on email"
+    steps:
+      - step: "Create plain partner"
+        action: "create"
+        model: "res.partner"
+        save_as: "plain"
+        values:
+          name: "CI Plain Partner"
+          email: "ci.plain.partner@example.com"
+
+      - step: "Follow the document"
+        action: "call"
+        target: "document"
+        method: "message_subscribe"
+        kwargs:
+          partner_ids:
+            - "REC: plain.id"
+
+      - step: "Post a comment on the document"
+        action: "call"
+        target: "document"
+        method: "message_post"
+        kwargs:
+          body: "CI comment for the email follower"
+          message_type: "comment"
+          subtype_xmlid: "mail.mt_comment"
+
+      - step: "The notification is an email"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "email"]
+          - ["res_partner_id", "=", "REC: plain.id"]
+        save_as: "email_notification"
+        expect_count: 1
+
+      - step: "No Chatwoot notification is created for the partner"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "chatwoot"]
+          - ["res_partner_id", "=", "REC: plain.id"]
+        save_as: "chatwoot_notification"
+        expect_count: 0

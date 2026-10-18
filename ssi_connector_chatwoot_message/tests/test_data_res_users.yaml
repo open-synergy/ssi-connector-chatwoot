@@ -1,0 +1,111 @@
+setup:
+  steps:
+    - step: "Create Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "backend"
+      values:
+        name: "CI Message Backend"
+        url: "https://chatwoot.example.com"
+        account_id: 1
+        api_token: "test-token"
+
+    - step: "Create inbox that allows outgoing messages"
+      action: "create"
+      model: "chatwoot.inbox"
+      save_as: "inbox"
+      values:
+        name: "CI Message Inbox"
+        backend_id: "REC: backend.id"
+        chatwoot_id: "11"
+        allow_outgoing: true
+
+    - step: "Create the partner that holds the document"
+      action: "create"
+      model: "res.partner"
+      save_as: "document"
+      values:
+        name: "CI Message Document"
+
+scenarios:
+  - name: "Chatwoot policy enables the contact sync"
+    steps:
+      - step: "Create user handled by Chatwoot"
+        action: "create"
+        model: "res.users"
+        save_as: "chatwoot_user"
+        values:
+          name: "CI Chatwoot User One"
+          login: "ci_chatwoot_user_one"
+          notification_type: "chatwoot"
+          chatwoot_inbox_id: "REC: inbox.id"
+
+      - step: "The partner of the user is flagged for sync"
+        action: "assert"
+        target: "chatwoot_user"
+        asserts:
+          partner_id.sync_to_chatwoot:
+            type: "value"
+            expected: true
+
+  - name: "Reject Chatwoot policy without inbox"
+    steps:
+      - step: "User handled by Chatwoot without inbox is rejected"
+        action: "create"
+        model: "res.users"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "needs a Chatwoot inbox"
+        values:
+          name: "CI Chatwoot User Two"
+          login: "ci_chatwoot_user_two"
+          notification_type: "chatwoot"
+
+  - name: "User mention is notified via Chatwoot"
+    steps:
+      - step: "Create user handled by Chatwoot"
+        action: "create"
+        model: "res.users"
+        save_as: "chatwoot_user"
+        values:
+          name: "CI Chatwoot User Three"
+          login: "ci_chatwoot_user_three"
+          notification_type: "chatwoot"
+          chatwoot_inbox_id: "REC: inbox.id"
+
+      - step: "Mention the user in a message"
+        action: "call"
+        target: "document"
+        method: "message_post"
+        kwargs:
+          body: "CI mention for the Chatwoot user"
+          message_type: "comment"
+          subtype_xmlid: "mail.mt_comment"
+          partner_ids:
+            - "REC: chatwoot_user.partner_id.id"
+
+      - step: "A Chatwoot notification is created for the user"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "chatwoot"]
+          - ["res_partner_id", "=", "REC: chatwoot_user.partner_id.id"]
+        save_as: "chatwoot_notification"
+        expect_count: 1
+
+      - step: "The notification waits for the export"
+        action: "assert"
+        target: "chatwoot_notification"
+        asserts:
+          notification_status:
+            type: "value"
+            expected: "ready"
+
+      - step: "No email notification is created for the user"
+        action: "search"
+        model: "mail.notification"
+        domain:
+          - ["notification_type", "=", "email"]
+          - ["res_partner_id", "=", "REC: chatwoot_user.partner_id.id"]
+        save_as: "email_notification"
+        expect_count: 0
