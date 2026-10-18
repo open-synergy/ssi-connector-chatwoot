@@ -69,6 +69,35 @@ class ChatwootBackend(models.Model):
             },
         }
 
+    def action_import_inbox(self):
+        """Queue the import of the inboxes of this backend.
+
+        :return: a client action showing that the import was queued
+        """
+        self.ensure_one()
+        self.with_delay().import_inbox()
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": "Import Inboxes",
+                "message": "The inbox import has been queued.",
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
+    def import_inbox(self):
+        """Import the inboxes of the Chatwoot account into Odoo.
+
+        Designed to be called via ``with_delay()``. Inboxes are created
+        or updated; none is ever removed.
+        """
+        self.ensure_one()
+        with self.work_on("chatwoot.inbox") as work:
+            importer = work.component(usage="batch.importer")
+            importer.run()
+
     def delete_contact(self, chatwoot_id):
         """Delete a contact from Chatwoot by its external ID.
 

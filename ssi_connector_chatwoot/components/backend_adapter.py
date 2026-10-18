@@ -16,10 +16,14 @@ import requests
 
 from odoo.addons.component.core import AbstractComponent
 from odoo.addons.connector.exception import NetworkRetryableError
+from odoo.addons.queue_job.exception import RetryableJobError
 
 _logger = logging.getLogger(__name__)
 
 _DEFAULT_TIMEOUT = 30  # seconds
+
+# HTTP statuses that signal a temporary condition worth retrying.
+_RETRYABLE_STATUSES = (429, 500, 502, 503, 504)
 
 
 class ChatwootBaseAdapter(AbstractComponent):
@@ -65,6 +69,8 @@ class ChatwootBaseAdapter(AbstractComponent):
         :param method: HTTP method (get, post, put, patch, delete)
         :param path:   API path relative to the base accounts URL
         :raises NetworkRetryableError: on connection / timeout errors
+        :raises RetryableJobError: on HTTP 429, 500, 502, 503 and 504
+        :raises requests.exceptions.HTTPError: on any other HTTP error
         """
         url = "{}/{}".format(self._base_url, path.lstrip("/"))
         kwargs.setdefault("timeout", _DEFAULT_TIMEOUT)
@@ -78,6 +84,12 @@ class ChatwootBaseAdapter(AbstractComponent):
                 "Chatwoot: %s" % exc
             ) from exc
 
+        if response.status_code in _RETRYABLE_STATUSES:
+            raise RetryableJobError(
+                "Temporary Chatwoot error {} for url: {}".format(
+                    response.status_code, response.url
+                )
+            )
         if not response.ok:
             try:
                 body = response.json()

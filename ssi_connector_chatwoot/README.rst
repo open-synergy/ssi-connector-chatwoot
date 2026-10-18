@@ -21,6 +21,14 @@ Chatwoot Backend
   <docs/chatwoot_backend/03-delete.html>`_
 * `Test Connection of Chatwoot Backend
   <docs/chatwoot_backend/04-test-connection.html>`_
+* `Import Inboxes of Chatwoot Backend
+  <docs/chatwoot_backend/05-import-inbox.html>`_
+
+Chatwoot Inbox
+--------------
+
+* `Edit Chatwoot Inbox
+  <docs/chatwoot_inbox/01-edit.html>`_
 
 Installation
 ============

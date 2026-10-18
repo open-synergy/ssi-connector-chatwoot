@@ -1,0 +1,70 @@
+setup:
+  steps:
+    - step: "Create Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "backend"
+      values:
+        name: "Yaml Inbox Backend"
+        url: "https://chatwoot.example.com"
+        account_id: 1
+        api_token: "test-token"
+
+scenarios:
+  - name: "Create inbox and allow outgoing messages"
+    steps:
+      - step: "Create inbox"
+        action: "create"
+        model: "chatwoot.inbox"
+        save_as: "inbox"
+        values:
+          name: "Yaml WhatsApp"
+          backend_id: "REC: backend.id"
+          chatwoot_id: "11"
+
+      - step: "Outgoing messages are not allowed by default"
+        action: "assert"
+        target: "inbox"
+        asserts:
+          allow_outgoing:
+            type: "value"
+            expected: false
+          active:
+            type: "value"
+            expected: true
+
+      - step: "Allow outgoing messages"
+        action: "write"
+        target: "inbox"
+        values:
+          allow_outgoing: true
+
+      - step: "Outgoing messages are now allowed"
+        action: "assert"
+        target: "inbox"
+        asserts:
+          allow_outgoing:
+            type: "value"
+            expected: true
+
+  - name: "Reject duplicate inbox for the same backend"
+    steps:
+      - step: "Create inbox"
+        action: "create"
+        model: "chatwoot.inbox"
+        save_as: "inbox"
+        values:
+          name: "Yaml Telegram"
+          backend_id: "REC: backend.id"
+          chatwoot_id: "22"
+
+      - step: "Second inbox with the same Chatwoot ID is rejected"
+        action: "create"
+        model: "chatwoot.inbox"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "same Chatwoot ID"
+        values:
+          name: "Yaml Telegram Duplicate"
+          backend_id: "REC: backend.id"
+          chatwoot_id: "22"
