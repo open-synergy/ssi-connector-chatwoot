@@ -1,0 +1,94 @@
+scenarios:
+  - name: "Create backend with defaults"
+    steps:
+      - step: "Create Chatwoot backend"
+        action: "create"
+        model: "chatwoot.backend"
+        save_as: "backend"
+        values:
+          name: "Yaml Create Backend"
+          url: "https://chatwoot.example.com"
+          account_id: 1
+          api_token: "test-token"
+
+      - step: "Backend is active and belongs to the current company"
+        action: "assert"
+        target: "backend"
+        asserts:
+          active:
+            type: "value"
+            expected: true
+          company_id:
+            type: "m2o"
+            expected: "REC: company"
+          name:
+            type: "value"
+            expected: "Yaml Create Backend"
+
+  - name: "Edit and archive backend"
+    steps:
+      - step: "Create Chatwoot backend"
+        action: "create"
+        model: "chatwoot.backend"
+        save_as: "backend"
+        values:
+          name: "Yaml Edit Backend"
+          url: "https://chatwoot.example.com"
+          account_id: 1
+          api_token: "test-token"
+
+      - step: "Change name and URL"
+        action: "write"
+        target: "backend"
+        values:
+          name: "Yaml Edit Backend Renamed"
+          url: "https://chatwoot-renamed.example.com"
+
+      - step: "New values are stored"
+        action: "assert"
+        target: "backend"
+        asserts:
+          name:
+            type: "value"
+            expected: "Yaml Edit Backend Renamed"
+          url:
+            type: "value"
+            expected: "https://chatwoot-renamed.example.com"
+
+      - step: "Archive the backend"
+        action: "write"
+        target: "backend"
+        values:
+          active: false
+
+      - step: "Backend is archived"
+        action: "assert"
+        target: "backend"
+        asserts:
+          active:
+            type: "value"
+            expected: false
+
+  - name: "Delete backend without binding"
+    steps:
+      - step: "Create Chatwoot backend"
+        action: "create"
+        model: "chatwoot.backend"
+        save_as: "backend"
+        values:
+          name: "Yaml Delete Backend"
+          url: "https://chatwoot.example.com"
+          account_id: 1
+          api_token: "test-token"
+
+      - step: "Delete the backend"
+        action: "unlink"
+        target: "backend"
+
+      - step: "No backend with that name remains"
+        action: "search"
+        model: "chatwoot.backend"
+        domain:
+          - ["name", "=", "Yaml Delete Backend"]
+        save_as: "backends"
+        expect_count: 0
