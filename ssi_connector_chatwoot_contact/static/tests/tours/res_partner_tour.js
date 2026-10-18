@@ -63,7 +63,7 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
                 // -- Flow 2 - Click the New button
                 {
                     content: "Click New",
-                    trigger: ".o_kanban_button_new",
+                    trigger: ".o-kanban-button-new",
                     extra_trigger: ".o_kanban_view",
                 },
                 {
@@ -94,7 +94,7 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
                 {
                     content: "Enable Sync to Chatwoot",
                     trigger:
-                        ".o_notebook .tab-pane.active .o_field_boolean[name='sync_to_chatwoot'] input",
+                        ".o_notebook .tab-pane.active .o_field_widget[name='sync_to_chatwoot'] input",
                     extra_trigger: ".o_form_view.o_form_editable",
                 },
                 // -- Flow 6 - Click Save
