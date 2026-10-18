@@ -6,8 +6,9 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
     // The Contacts menu is provided by the optional Contacts app, which is
     // not a dependency of this module and is therefore not installed in the
     // test database. The tours open the very same partner list action
-    // through its URL instead of through the menu (Flow 1 of the IK).
-    var PARTNER_LIST_URL = "/web#model=res.partner&view_type=list";
+    // through its URL (action XML ID, list view) instead of through the menu
+    // (Flow 1 of the IK).
+    var PARTNER_LIST_URL = "/web#action=base.action_partner_form&view_type=list";
 
     function openChatwootTabSteps() {
         return [

@@ -6,7 +6,7 @@ from odoo.tests import HttpSavepointCase, tagged
 
 # The Contacts menu belongs to an app that is not installed in the test
 # database, so the tours open the partner list action through its URL.
-PARTNER_LIST_URL = "/web#model=res.partner&view_type=list"
+PARTNER_LIST_URL = "/web#action=base.action_partner_form&view_type=list"
 
 
 @tagged("post_install", "-at_install")
