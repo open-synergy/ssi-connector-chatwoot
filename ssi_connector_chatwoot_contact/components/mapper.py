@@ -63,11 +63,21 @@ class ChatwootResPartnerExportMapper(Component):
 
     @mapping
     def name(self, record):
+        """Map the partner name, defaulting to an empty string.
+
+        :param record: the ``chatwoot.res.partner`` binding
+        :return: dict with the ``name`` key
+        """
         return {"name": record.name or ""}
 
     @changed_by("email")
     @mapping
     def email(self, record):
+        """Map the partner email, omitted when empty.
+
+        :param record: the ``chatwoot.res.partner`` binding
+        :return: dict with ``email``, or an empty dict
+        """
         # Omit the field entirely when empty — Chatwoot rejects empty strings
         if record.email:
             return {"email": record.email}
@@ -106,6 +116,11 @@ class ChatwootResPartnerExportMapper(Component):
 
     @mapping
     def additional_attributes(self, record):
+        """Map extra attributes: the Odoo partner id and company name.
+
+        :param record: the ``chatwoot.res.partner`` binding
+        :return: dict with the ``additional_attributes`` key
+        """
         return {
             "additional_attributes": {
                 "odoo_id": record.odoo_id.id,

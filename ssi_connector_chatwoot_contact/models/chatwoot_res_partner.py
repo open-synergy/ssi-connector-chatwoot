@@ -17,7 +17,8 @@ references the partner and the desired Chatwoot backend.  You can also call
 
 import logging
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -30,14 +31,6 @@ class ChatwootResPartner(models.Model):
     _inherits = {"res.partner": "odoo_id"}
     _description = "Chatwoot Contact Binding"
     _rec_name = "name"
-
-    _sql_constraints = [
-        (
-            "chatwoot_partner_uniq",
-            "unique(backend_id, odoo_id)",
-            "A Chatwoot binding already exists for this partner and backend.",
-        )
-    ]
 
     # -----------------------------------------------------------------
     # Binding fields (required by connector.external.binding / binder)
@@ -60,6 +53,51 @@ class ChatwootResPartner(models.Model):
     sync_date = fields.Datetime(
         string="Last Synchronization",
     )
+
+    # -----------------------------------------------------------------
+    # Constraints
+    # -----------------------------------------------------------------
+
+    @api.constrains("backend_id", "odoo_id")
+    def _check_chatwoot_binding_unique(self):
+        """Reject a second binding for the same partner and backend.
+
+        :raises ValidationError: when another binding (archived ones
+            included) already links the same partner to the same backend
+        """
+        for binding in self.sudo():
+            if not binding._check_chatwoot_binding_unique_condition():
+                error_message = """
+Context: Bind partner to Chatwoot backend
+Database ID: %s
+Problem: A Chatwoot binding already exists for this partner and backend
+Solution: Edit the existing binding instead of creating another one
+""" % (
+                    binding.id,
+                )
+                raise ValidationError(_(error_message))
+
+    def _check_chatwoot_binding_unique_condition(self):
+        """Tell whether no other binding shares partner and backend.
+
+        Extension point: override to relax or tighten the rule without
+        touching the error message.
+
+        :return: True when valid; never raises
+        """
+        self.ensure_one()
+        duplicates = (
+            self.with_context(active_test=False)
+            .sudo()
+            .search_count(
+                [
+                    ("id", "!=", self.id),
+                    ("backend_id", "=", self.backend_id.id),
+                    ("odoo_id", "=", self.odoo_id.id),
+                ]
+            )
+        )
+        return not duplicates
 
     # -----------------------------------------------------------------
     # Convenience methods

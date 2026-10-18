@@ -7,6 +7,29 @@ Chatwoot Connector
 ==================
 
 
+Work Instruction
+================
+
+Chatwoot Contact Binding
+------------------------
+
+* `Create Chatwoot Contact Binding
+  <docs/chatwoot_res_partner/01-create.html>`_
+* `Edit Chatwoot Contact Binding
+  <docs/chatwoot_res_partner/02-edit.html>`_
+* `Delete Chatwoot Contact Binding
+  <docs/chatwoot_res_partner/03-delete.html>`_
+* `Export Chatwoot Contact Binding
+  <docs/chatwoot_res_partner/04-export.html>`_
+
+Partner
+-------
+
+* `Create Partner for Chatwoot Sync
+  <docs/res_partner/01-create.html>`_
+* `Force Export Partner to Chatwoot
+  <docs/res_partner/02-force-export.html>`_
+
 Installation
 ============
 
