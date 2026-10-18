@@ -265,4 +265,28 @@ odoo.define("ssi_connector_chatwoot.chatwoot_backend_tour", function (require) {
             },
         ])
     );
+
+    // IK: docs/chatwoot_backend/05-import-inbox.md
+    tour.register(
+        "ssi_connector_chatwoot_chatwoot_backend_import_inbox",
+        {
+            test: true,
+            url: "/web",
+        },
+        [].concat(openBackendMenuSteps(), openBackendSteps("TOUR Import Backend"), [
+            // -- Flow 3 - Click Import Inboxes (the import is only queued)
+            {
+                content: "Click Import Inboxes",
+                trigger: ".o_statusbar_buttons button[name='action_import_inbox']",
+                extra_trigger: ".o_form_view",
+            },
+
+            // -- Post-Condition - the import is queued
+            {
+                content: "Queued notification is displayed",
+                trigger: ".o_notification:contains(The inbox import has been queued)",
+                run: assertOnly,
+            },
+        ])
+    );
 });

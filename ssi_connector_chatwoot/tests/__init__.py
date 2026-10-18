@@ -3,3 +3,5 @@
 
 from . import test_chatwoot_backend
 from . import test_ui_chatwoot_backend
+from . import test_chatwoot_inbox
+from . import test_ui_chatwoot_inbox

@@ -13,6 +13,11 @@
                         type="object"
                         class="oe_highlight"
                     />
+                    <button
+                        name="action_import_inbox"
+                        string="Import Inboxes"
+                        type="object"
+                    />
                 </header>
                 <sheet>
                     <widget

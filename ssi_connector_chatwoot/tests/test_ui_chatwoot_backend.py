@@ -21,7 +21,7 @@ class TestUiChatwootBackend(HttpSavepointCase):
             {"groups_id": [(4, cls.env.ref("connector.group_connector_manager").id)]}
         )
         backend_model = cls.env["chatwoot.backend"]
-        for kind in ("Edit", "Delete", "Test"):
+        for kind in ("Edit", "Delete", "Test", "Import"):
             backend_model.create(
                 {
                     "name": "TOUR %s Backend" % kind,
@@ -77,3 +77,16 @@ class TestUiChatwootBackend(HttpSavepointCase):
                 "ssi_connector_chatwoot_chatwoot_backend_test_connection",
                 login="admin",
             )
+
+    def test_import_inbox(self):
+        """Run the import inboxes tour for ``chatwoot.backend``.
+
+        The import is only queued, so no network access happens.
+
+        IK: docs/chatwoot_backend/05-import-inbox.md
+        """
+        self.start_tour(
+            "/web",
+            "ssi_connector_chatwoot_chatwoot_backend_import_inbox",
+            login="admin",
+        )
