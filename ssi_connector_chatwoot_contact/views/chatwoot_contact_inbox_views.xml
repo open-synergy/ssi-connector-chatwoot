@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- chatwoot.contact.inbox list view -->
+    <record id="view_chatwoot_contact_inbox_tree" model="ir.ui.view">
+        <field name="name">chatwoot.contact.inbox.tree</field>
+        <field name="model">chatwoot.contact.inbox</field>
+        <field name="arch" type="xml">
+            <tree string="Chatwoot Contact Inbox Bindings">
+                <field name="partner_binding_id" />
+                <field name="inbox_id" />
+                <field name="backend_id" />
+                <field name="chatwoot_id" />
+                <field name="sync_date" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- chatwoot.contact.inbox form view -->
+    <record id="view_chatwoot_contact_inbox_form" model="ir.ui.view">
+        <field name="name">chatwoot.contact.inbox.form</field>
+        <field name="model">chatwoot.contact.inbox</field>
+        <field name="arch" type="xml">
+            <form string="Chatwoot Contact Inbox Binding">
+                <header>
+                    <button
+                        name="action_export"
+                        string="Export"
+                        type="object"
+                        class="oe_highlight"
+                        groups="connector.group_connector_manager"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Odoo">
+                            <field name="partner_binding_id" />
+                            <field name="inbox_id" />
+                            <field name="backend_id" />
+                        </group>
+                        <group string="Chatwoot">
+                            <field name="chatwoot_id" readonly="1" />
+                            <field name="sync_date" readonly="1" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_chatwoot_contact_inbox" model="ir.actions.act_window">
+        <field name="name">Chatwoot Contact Inbox Bindings</field>
+        <field name="res_model">chatwoot.contact.inbox</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu entry under Chatwoot > Bindings -->
+    <menuitem
+        id="menu_chatwoot_contact_inbox"
+        name="Contact Inboxes"
+        parent="ssi_connector_chatwoot.menu_chatwoot_binding"
+        action="action_chatwoot_contact_inbox"
+        sequence="20"
+        groups="connector.group_connector_manager"
+    />
+</odoo>

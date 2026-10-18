@@ -17,6 +17,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/chatwoot_res_partner_views.xml",
+        "views/chatwoot_contact_inbox_views.xml",
         "views/res_partner_views.xml",
         "views/assets.xml",
     ],

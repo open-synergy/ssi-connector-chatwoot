@@ -1,0 +1,111 @@
+setup:
+  steps:
+    - step: "Create Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "backend"
+      values:
+        name: "CI Chatwoot Backend"
+        url: "https://chatwoot.example.com"
+        account_id: 1
+        api_token: "test-token"
+
+    - step: "Create another Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "other_backend"
+      values:
+        name: "CI Other Chatwoot Backend"
+        url: "https://other.example.com"
+        account_id: 2
+        api_token: "other-token"
+
+    - step: "Create inbox of the first backend"
+      action: "create"
+      model: "chatwoot.inbox"
+      save_as: "inbox"
+      values:
+        name: "CI Inbox"
+        backend_id: "REC: backend.id"
+        chatwoot_id: "5"
+        allow_outgoing: true
+
+    - step: "Create inbox of the other backend"
+      action: "create"
+      model: "chatwoot.inbox"
+      save_as: "other_inbox"
+      values:
+        name: "CI Other Inbox"
+        backend_id: "REC: other_backend.id"
+        chatwoot_id: "6"
+        allow_outgoing: true
+
+    - step: "Create partner that is not flagged for sync"
+      action: "create"
+      model: "res.partner"
+      save_as: "partner"
+      values:
+        name: "CI Partner"
+        sync_to_chatwoot: false
+
+    - step: "Create contact binding of the partner"
+      action: "create"
+      model: "chatwoot.res.partner"
+      save_as: "partner_binding"
+      values:
+        odoo_id: "REC: partner.id"
+        backend_id: "REC: backend.id"
+
+scenarios:
+  - name: "Create contact inbox binding"
+    steps:
+      - step: "Create the binding for contact and inbox"
+        action: "create"
+        model: "chatwoot.contact.inbox"
+        save_as: "contact_inbox"
+        values:
+          partner_binding_id: "REC: partner_binding.id"
+          inbox_id: "REC: inbox.id"
+
+      - step: "Assert backend and name are filled"
+        action: "assert"
+        target: "contact_inbox"
+        asserts:
+          backend_id:
+            type: "m2o"
+            expected: "REC: backend"
+          name:
+            type: "value"
+            expected: "CI Partner / CI Inbox"
+
+  - name: "Reject duplicate contact inbox binding"
+    steps:
+      - step: "Create the binding for contact and inbox"
+        action: "create"
+        model: "chatwoot.contact.inbox"
+        save_as: "contact_inbox"
+        values:
+          partner_binding_id: "REC: partner_binding.id"
+          inbox_id: "REC: inbox.id"
+
+      - step: "Second binding for the same pair is rejected"
+        action: "create"
+        model: "chatwoot.contact.inbox"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "already exists"
+        values:
+          partner_binding_id: "REC: partner_binding.id"
+          inbox_id: "REC: inbox.id"
+
+  - name: "Reject inbox of another backend"
+    steps:
+      - step: "Binding with an inbox of another backend is rejected"
+        action: "create"
+        model: "chatwoot.contact.inbox"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "different backends"
+        values:
+          partner_binding_id: "REC: partner_binding.id"
+          inbox_id: "REC: other_inbox.id"

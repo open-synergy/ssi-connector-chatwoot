@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_chatwoot_res_partner_manager,chatwoot.res.partner manager,model_chatwoot_res_partner,connector.group_connector_manager,1,1,1,1
 access_chatwoot_res_partner_user,chatwoot.res.partner user,model_chatwoot_res_partner,base.group_user,1,0,0,0
+access_chatwoot_contact_inbox_manager,chatwoot.contact.inbox manager,model_chatwoot_contact_inbox,connector.group_connector_manager,1,1,1,1
+access_chatwoot_contact_inbox_user,chatwoot.contact.inbox user,model_chatwoot_contact_inbox,base.group_user,1,0,0,0

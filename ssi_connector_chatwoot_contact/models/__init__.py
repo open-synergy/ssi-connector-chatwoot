@@ -2,4 +2,5 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 from . import chatwoot_res_partner
+from . import chatwoot_contact_inbox
 from . import res_partner
