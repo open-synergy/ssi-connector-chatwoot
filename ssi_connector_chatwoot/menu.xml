@@ -23,8 +23,8 @@
 
     <menuitem
         id="menu_chatwoot_configuration"
-        name="Configuration"
-        parent="menu_chatwoot_root"
+        name="Chatwoot"
+        parent="ssi_connector.menu_connector_configuration"
         sequence="999"
     />
 

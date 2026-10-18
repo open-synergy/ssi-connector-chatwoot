@@ -11,11 +11,13 @@
     "depends": [
         "connector",
         "ssi_connector",
+        "web_tour",
     ],
     "data": [
         "security/ir.model.access.csv",
         "menu.xml",
         "views/chatwoot_backend_views.xml",
+        "views/assets.xml",
     ],
     "installable": True,
 }

@@ -7,6 +7,21 @@ Chatwoot Connector
 ==================
 
 
+Work Instruction
+================
+
+Chatwoot Backend
+----------------
+
+* `Create Chatwoot Backend
+  <docs/chatwoot_backend/01-create.html>`_
+* `Edit Chatwoot Backend
+  <docs/chatwoot_backend/02-edit.html>`_
+* `Delete Chatwoot Backend
+  <docs/chatwoot_backend/03-delete.html>`_
+* `Test Connection of Chatwoot Backend
+  <docs/chatwoot_backend/04-test-connection.html>`_
+
 Installation
 ============
 

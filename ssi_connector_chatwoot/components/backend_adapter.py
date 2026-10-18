@@ -35,6 +35,12 @@ class ChatwootBaseAdapter(AbstractComponent):
 
     @property
     def _base_url(self):
+        """Return the base URL of the Chatwoot account API.
+
+        :return: ``<url>/api/v1/accounts/<account_id>`` built from the
+            backend record, without a trailing slash on ``<url>``
+        :rtype: str
+        """
         backend = self.backend_record
         return "{}/api/v1/accounts/{}".format(
             backend.url.rstrip("/"),
@@ -43,6 +49,11 @@ class ChatwootBaseAdapter(AbstractComponent):
 
     @property
     def _headers(self):
+        """Return the HTTP headers sent with every Chatwoot request.
+
+        :return: the ``api_access_token`` and ``Content-Type`` headers
+        :rtype: dict
+        """
         return {
             "api_access_token": self.backend_record.api_token,
             "Content-Type": "application/json",
@@ -95,24 +106,65 @@ class ChatwootBaseAdapter(AbstractComponent):
 
     # pylint: disable=W8106
     def search(self, *args, **kwargs):
+        """Search records of the Chatwoot resource (abstract stub).
+
+        Concrete adapters must override this method.
+
+        :raises NotImplementedError: always, until overridden
+        """
         raise NotImplementedError
 
     # pylint: disable=W8106
     def read(self, external_id, *args, **kwargs):
+        """Read one record of the Chatwoot resource (abstract stub).
+
+        Concrete adapters must override this method.
+
+        :param external_id: Chatwoot id of the record to read
+        :raises NotImplementedError: always, until overridden
+        """
         raise NotImplementedError
 
     # pylint: disable=W8106
     def search_read(self, *args, **kwargs):
+        """Search and read records of the resource (abstract stub).
+
+        Concrete adapters must override this method.
+
+        :raises NotImplementedError: always, until overridden
+        """
         raise NotImplementedError
 
     # pylint: disable=W8106
     def create(self, data):
+        """Create a record in the Chatwoot resource (abstract stub).
+
+        Concrete adapters must override this method.
+
+        :param data: values of the record to create
+        :raises NotImplementedError: always, until overridden
+        """
         raise NotImplementedError
 
     # pylint: disable=W8106
     def write(self, external_id, data):
+        """Update a record of the Chatwoot resource (abstract stub).
+
+        Concrete adapters must override this method.
+
+        :param external_id: Chatwoot id of the record to update
+        :param data: values to write
+        :raises NotImplementedError: always, until overridden
+        """
         raise NotImplementedError
 
     # pylint: disable=W8106
     def delete(self, external_id):
+        """Delete a record of the Chatwoot resource (abstract stub).
+
+        Concrete adapters must override this method.
+
+        :param external_id: Chatwoot id of the record to delete
+        :raises NotImplementedError: always, until overridden
+        """
         raise NotImplementedError
