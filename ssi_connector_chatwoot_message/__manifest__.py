@@ -3,7 +3,7 @@
 
 {
     "name": "Chatwoot Connector - Message",
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.1.0",
     "category": "Connector",
     "author": "PT. Simetri Sinergi Indonesia",
     "website": "https://simetri-sinergi.id",
