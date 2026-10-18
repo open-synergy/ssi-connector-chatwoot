@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="email_compose_message_wizard_form_chatwoot" model="ir.ui.view">
+        <field name="name">mail.compose.message.form.chatwoot</field>
+        <field name="model">mail.compose.message</field>
+        <field name="inherit_id" ref="mail.email_compose_message_wizard_form" />
+        <field name="arch" type="xml">
+            <field name="subject" position="after">
+                <field
+                    name="send_via"
+                    widget="radio"
+                    options="{'horizontal': true}"
+                    attrs="{'invisible': ['|', ('composition_mode', '!=', 'comment'), ('is_log', '=', True)]}"
+                />
+                <field
+                    name="chatwoot_inbox_id"
+                    options="{'no_create': True, 'no_open': True}"
+                    attrs="{'invisible': ['|', '|', ('composition_mode', '!=', 'comment'), ('is_log', '=', True), ('send_via', '!=', 'chatwoot')], 'required': [('composition_mode', '=', 'comment'), ('send_via', '=', 'chatwoot')]}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -15,16 +15,26 @@ class MailThread(models.AbstractModel):
         ``chatwoot``. Recipients of type ``user`` are left untouched:
         their channel comes from ``res.users.notification_type``.
 
+        When the context holds ``chatwoot_force_inbox_id`` (set by the
+        composer), every recipient listed in the partners of the message
+        is switched to ``chatwoot``, whatever its type. The other
+        followers keep their own preference.
+
         :param message: ``mail.message`` being notified
         :param msg_vals: values of the message, or False
         :return: recipients data, see ``_notify_thread``
         :rtype: dict
         """
         recipient_data = super()._notify_compute_recipients(message, msg_vals)
+        if self.env.context.get("chatwoot_force_inbox_id"):
+            forced_ids = set(message.sudo().partner_ids.ids)
+            for data in recipient_data["partners"]:
+                if data["id"] in forced_ids:
+                    data["notif"] = "chatwoot"
         candidates = [
             data
             for data in recipient_data["partners"]
-            if data["type"] in ("customer", "portal")
+            if data["type"] in ("customer", "portal") and data["notif"] != "chatwoot"
         ]
         if not candidates:
             return recipient_data
@@ -64,7 +74,9 @@ class MailThread(models.AbstractModel):
         """Notification method: Chatwoot.
 
         Creates one ``mail.notification`` of type ``chatwoot`` and one
-        message binding per recipient. The binding is exported by a
+        message binding per recipient. The inbox is the one in the
+        ``chatwoot_force_inbox_id`` context key for the partners of the
+        message, else the preference of the recipient. The binding is exported by a
         queue job. A recipient without a usable inbox gets an
         ``exception`` notification and no job.
 
@@ -81,8 +93,16 @@ class MailThread(models.AbstractModel):
             return True
         users = self.env["res.users"].sudo()
         partners = self.env["res.partner"].sudo()
+        forced_inbox = (
+            self.env["chatwoot.inbox"]
+            .sudo()
+            .browse(self.env.context.get("chatwoot_force_inbox_id"))
+        )
+        forced_ids = set(message.sudo().partner_ids.ids) if forced_inbox else set()
         for data in partners_data:
-            if data["type"] == "user":
+            if data["id"] in forced_ids:
+                inbox = forced_inbox
+            elif data["type"] == "user":
                 user = users.search([("partner_id", "=", data["id"])], limit=1)
                 inbox = user.chatwoot_inbox_id
             else:

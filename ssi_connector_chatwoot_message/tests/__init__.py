@@ -6,3 +6,5 @@ from . import test_res_partner
 from . import test_mail_notification
 from . import test_ui_res_users
 from . import test_ui_res_partner
+from . import test_mail_compose_message
+from . import test_ui_mail_compose_message

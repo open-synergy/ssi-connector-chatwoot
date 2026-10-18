@@ -16,6 +16,10 @@
                 type="text/javascript"
                 src="/ssi_connector_chatwoot_message/static/tests/tours/res_partner_tour.js"
             />
+        <script
+                type="text/javascript"
+                src="/ssi_connector_chatwoot_message/static/tests/tours/mail_compose_message_tour.js"
+            />
     </xpath>
 </template>
 </odoo>

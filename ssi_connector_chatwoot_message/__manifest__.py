@@ -20,6 +20,7 @@
         "views/res_users_views.xml",
         "views/res_partner_views.xml",
         "views/assets.xml",
+        "wizards/mail_compose_message.xml",
     ],
     "installable": True,
 }
