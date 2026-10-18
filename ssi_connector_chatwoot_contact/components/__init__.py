@@ -5,4 +5,5 @@ from . import adapter
 from . import binder
 from . import mapper
 from . import exporter
+from . import contact_inbox
 from . import listener

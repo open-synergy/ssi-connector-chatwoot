@@ -22,6 +22,14 @@ Chatwoot Contact Binding
 * `Export Chatwoot Contact Binding
   <docs/chatwoot_res_partner/04-export.html>`_
 
+Chatwoot Contact Inbox Binding
+------------------------------
+
+* `Create Chatwoot Contact Inbox Binding
+  <docs/chatwoot_contact_inbox/01-create.html>`_
+* `Export Chatwoot Contact Inbox Binding
+  <docs/chatwoot_contact_inbox/02-export.html>`_
+
 Partner
 -------
 
