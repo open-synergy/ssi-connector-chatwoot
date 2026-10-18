@@ -34,6 +34,12 @@ PARTNER_EXPORT_FIELDS = {
 
 
 def _no_connector_export(self, record, *args, **kwargs):
+    """Tell whether connector exports are disabled by context.
+
+    :param record: the partner being created or written
+    :return: truthy when ``connector_no_export`` or ``no_connector_export``
+        is set in the context
+    """
     return self.env.context.get("connector_no_export") or self.env.context.get(
         "no_connector_export"
     )

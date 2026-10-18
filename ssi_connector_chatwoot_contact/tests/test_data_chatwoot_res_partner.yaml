@@ -1,0 +1,286 @@
+setup:
+  steps:
+    - step: "Create Chatwoot backend"
+      action: "create"
+      model: "chatwoot.backend"
+      save_as: "backend"
+      values:
+        name: "Test Chatwoot Backend"
+        url: "https://chatwoot.example.com"
+        account_id: 1
+        api_token: "test-token"
+
+scenarios:
+  - name: "Create binding and reject duplicate"
+    steps:
+      - step: "Create partner that is not flagged for sync"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Binding Partner"
+          sync_to_chatwoot: false
+
+      - step: "Create binding for partner and backend"
+        action: "create"
+        model: "chatwoot.res.partner"
+        save_as: "binding"
+        values:
+          odoo_id: "REC: partner.id"
+          backend_id: "REC: backend.id"
+
+      - step: "Assert binding values"
+        action: "assert"
+        target: "binding"
+        asserts:
+          odoo_id:
+            type: "m2o"
+            expected: "REC: partner"
+          backend_id:
+            type: "m2o"
+            expected: "REC: backend"
+          name:
+            type: "value"
+            expected: "Binding Partner"
+
+      - step: "Second binding for same partner and backend is rejected"
+        action: "create"
+        model: "chatwoot.res.partner"
+        expect_error:
+          type: "ValidationError"
+          message_contains: "already exists"
+        values:
+          odoo_id: "REC: partner.id"
+          backend_id: "REC: backend.id"
+
+      - step: "Create another backend"
+        action: "create"
+        model: "chatwoot.backend"
+        save_as: "other_backend"
+        values:
+          name: "Other Chatwoot Backend"
+          url: "https://other.example.com"
+          account_id: 2
+          api_token: "other-token"
+
+      - step: "Binding for another backend is accepted"
+        action: "create"
+        model: "chatwoot.res.partner"
+        save_as: "other_binding"
+        values:
+          odoo_id: "REC: partner.id"
+          backend_id: "REC: other_backend.id"
+
+      - step: "Assert other binding backend"
+        action: "assert"
+        target: "other_binding"
+        asserts:
+          backend_id:
+            type: "m2o"
+            expected: "REC: other_backend"
+
+  - name: "Partner flagged for sync gets binding and export job"
+    steps:
+      - step: "Create partner flagged for sync"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Synced Partner"
+          email: "synced@example.com"
+          sync_to_chatwoot: true
+
+      - step: "Binding exists for the backend"
+        action: "search"
+        model: "chatwoot.res.partner"
+        domain:
+          - ["odoo_id", "=", "REC: partner.id"]
+          - ["backend_id", "=", "REC: backend.id"]
+        save_as: "binding"
+        expect_count: 1
+
+      - step: "One export job is queued for the binding"
+        action: "search"
+        model: "queue.job"
+        domain:
+          - ["method_name", "=", "export_record"]
+          - [
+              "func_string",
+              "like",
+              "EVAL: 'chatwoot.res.partner(%s,)' % registry['binding'].id",
+            ]
+        save_as: "jobs"
+        expect_count: 1
+
+  - name: "Partner not flagged for sync gets no binding and no job"
+    steps:
+      - step: "Create partner without sync flag"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Unsynced Partner"
+          sync_to_chatwoot: false
+
+      - step: "No binding exists"
+        action: "search"
+        model: "chatwoot.res.partner"
+        domain:
+          - ["odoo_id", "=", "REC: partner.id"]
+        save_as: "bindings"
+        expect_count: 0
+
+  - name: "Write only queues a job for monitored fields"
+    steps:
+      - step: "Create partner flagged for sync"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Monitored Partner"
+          sync_to_chatwoot: true
+
+      - step: "Find the binding"
+        action: "search"
+        model: "chatwoot.res.partner"
+        domain:
+          - ["odoo_id", "=", "REC: partner.id"]
+          - ["backend_id", "=", "REC: backend.id"]
+        save_as: "binding"
+        expect_count: 1
+
+      - step: "Write a field that is not monitored"
+        action: "write"
+        target: "partner"
+        values:
+          comment: "A note"
+
+      - step: "Still only the creation job exists"
+        action: "search"
+        model: "queue.job"
+        domain:
+          - ["method_name", "=", "export_record"]
+          - [
+              "func_string",
+              "like",
+              "EVAL: 'chatwoot.res.partner(%s,)' % registry['binding'].id",
+            ]
+        save_as: "jobs"
+        expect_count: 1
+
+      - step: "Write a monitored field"
+        action: "write"
+        target: "partner"
+        values:
+          email: "monitored@example.com"
+
+      - step: "A second job is queued"
+        action: "search"
+        model: "queue.job"
+        domain:
+          - ["method_name", "=", "export_record"]
+          - [
+              "func_string",
+              "like",
+              "EVAL: 'chatwoot.res.partner(%s,)' % registry['binding'].id",
+            ]
+        save_as: "jobs"
+        expect_count: 2
+
+  - name: "Force export on a synced partner"
+    steps:
+      - step: "Create partner flagged for sync"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Forced Partner"
+          sync_to_chatwoot: true
+
+      - step: "Force export"
+        action: "call"
+        target: "partner"
+        method: "action_force_export_to_chatwoot"
+
+      - step: "Find the binding"
+        action: "search"
+        model: "chatwoot.res.partner"
+        domain:
+          - ["odoo_id", "=", "REC: partner.id"]
+          - ["backend_id", "=", "REC: backend.id"]
+        save_as: "binding"
+        expect_count: 1
+
+      - step: "Creation job plus forced job are queued"
+        action: "search"
+        model: "queue.job"
+        domain:
+          - ["method_name", "=", "export_record"]
+          - [
+              "func_string",
+              "like",
+              "EVAL: 'chatwoot.res.partner(%s,)' % registry['binding'].id",
+            ]
+        save_as: "jobs"
+        expect_count: 2
+
+  - name: "Force export on a partner not flagged for sync does nothing"
+    steps:
+      - step: "Create partner without sync flag"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Unflagged Forced Partner"
+          sync_to_chatwoot: false
+
+      - step: "Force export"
+        action: "call"
+        target: "partner"
+        method: "action_force_export_to_chatwoot"
+
+      - step: "No binding exists"
+        action: "search"
+        model: "chatwoot.res.partner"
+        domain:
+          - ["odoo_id", "=", "REC: partner.id"]
+        save_as: "bindings"
+        expect_count: 0
+
+  - name: "Unlink synced partner queues contact deletion"
+    steps:
+      - step: "Create partner flagged for sync"
+        action: "create"
+        model: "res.partner"
+        save_as: "partner"
+        values:
+          name: "Deleted Partner"
+          sync_to_chatwoot: true
+
+      - step: "Find the binding"
+        action: "search"
+        model: "chatwoot.res.partner"
+        domain:
+          - ["odoo_id", "=", "REC: partner.id"]
+          - ["backend_id", "=", "REC: backend.id"]
+        save_as: "binding"
+        expect_count: 1
+
+      - step: "Set the Chatwoot contact id on the binding"
+        action: "write"
+        target: "binding"
+        values:
+          chatwoot_id: "chatwoot-del-9001"
+
+      - step: "Delete the partner"
+        action: "unlink"
+        target: "partner"
+
+      - step: "A deletion job is queued with the contact id"
+        action: "search"
+        model: "queue.job"
+        domain:
+          - ["method_name", "=", "delete_contact"]
+          - ["func_string", "like", "chatwoot-del-9001"]
+        save_as: "jobs"
+        expect_count: 1

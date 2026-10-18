@@ -3,7 +3,7 @@
 
 {
     "name": "Chatwoot Connector - Contact",
-    "version": "14.0.2.0.0",
+    "version": "14.0.2.0.1",
     "category": "Connector",
     "author": "PT. Simetri Sinergi Indonesia",
     "website": "https://simetri-sinergi.id",
@@ -11,11 +11,13 @@
     "depends": [
         "ssi_connector_chatwoot",
         "queue_job",
+        "web_tour",
     ],
     "data": [
         "security/ir.model.access.csv",
         "views/chatwoot_res_partner_views.xml",
         "views/res_partner_views.xml",
+        "views/assets.xml",
     ],
     "installable": True,
 }

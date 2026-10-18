@@ -6,14 +6,6 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <!-- Add checkbox near the top of the form -->
-            <xpath expr="//field[@name='website']" position="after">
-                <field
-                    name="sync_to_chatwoot"
-                    groups="connector.group_connector_manager"
-                />
-            </xpath>
-
             <!-- Add a Chatwoot tab in the chatter/notebook area -->
             <xpath expr="//notebook" position="inside">
                 <page
@@ -30,6 +22,13 @@
                             <field name="chatwoot_id" readonly="1" />
                             <field name="sync_date" readonly="1" />
                         </tree>
+                        <form string="Chatwoot Binding">
+                            <group>
+                                <field name="backend_id" />
+                                <field name="chatwoot_id" readonly="1" />
+                                <field name="sync_date" readonly="1" />
+                            </group>
+                        </form>
                     </field>
                     <div attrs="{'invisible': [('sync_to_chatwoot', '=', False)]}">
                         <button
