@@ -76,6 +76,12 @@ msgid ""
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: code:addons/ssi_connector_chatwoot_contact/components/contact_inbox.py:0
+#, python-format
+msgid "Already exported."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -141,12 +147,14 @@ msgid "Channels"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_contact_inbox_form
 #: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_res_partner_form
 #: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_partner_form_chatwoot
 msgid "Chatwoot"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__backend_id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__backend_id
 msgid "Chatwoot Backend"
 msgstr ""
@@ -179,6 +187,33 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__chatwoot_id
 msgid "Chatwoot Contact ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model,name:ssi_connector_chatwoot_contact.model_chatwoot_contact_inbox
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_contact_inbox_form
+msgid "Chatwoot Contact Inbox Binding"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.actions.act_window,name:ssi_connector_chatwoot_contact.action_chatwoot_contact_inbox
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_contact_inbox_tree
+msgid "Chatwoot Contact Inbox Bindings"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__backend_id
+msgid "Chatwoot backend of the inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__partner_binding_id
+msgid "Chatwoot contact binding of the partner"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__inbox_id
+msgid "Chatwoot inbox paired with the contact"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -256,6 +291,16 @@ msgid "Contact"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__partner_binding_id
+msgid "Contact Binding"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.ui.menu,name:ssi_connector_chatwoot_contact.menu_chatwoot_contact_inbox
+msgid "Contact Inboxes"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.ui.menu,name:ssi_connector_chatwoot_contact.menu_chatwoot_contacts
 msgid "Contacts"
 msgstr ""
@@ -284,11 +329,13 @@ msgid "Country"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__create_uid
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__create_date
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__create_date
 msgid "Created on"
 msgstr ""
@@ -319,11 +366,17 @@ msgid "Date"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__sync_date
+msgid "Date of the last export of this binding"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__trust
 msgid "Degree of trust you have in this debtor"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__display_name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__display_name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_res_partner__display_name
 msgid "Display Name"
@@ -355,6 +408,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__ethnicity_id
 msgid "Ethnicity"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_contact_inbox_form
+msgid "Export"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -445,6 +503,7 @@ msgid "Has Unreconciled Entries"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_res_partner__id
 msgid "ID"
@@ -518,6 +577,11 @@ msgid "Image 512"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__inbox_id
+msgid "Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__industry_id
 msgid "Industry"
 msgstr ""
@@ -565,22 +629,26 @@ msgid "Language"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox____last_update
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner____last_update
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__sync_date
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__sync_date
 msgid "Last Synchronization"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__write_uid
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__write_date
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__write_date
 msgid "Last Updated on"
 msgstr ""
@@ -650,6 +718,7 @@ msgid "My Activity Deadline"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__name
 msgid "Name"
 msgstr ""
@@ -715,6 +784,7 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_contact_inbox_form
 #: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_res_partner_form
 msgid "Odoo"
 msgstr ""
@@ -742,6 +812,11 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_contact.view_chatwoot_res_partner_form
 msgid "Partner Info"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__name
+msgid "Partner and inbox of this binding"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
@@ -848,6 +923,16 @@ msgstr ""
 #. module: ssi_connector_chatwoot_contact
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_res_partner__signup_url
 msgid "Signup URL"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__chatwoot_id
+msgid "Source ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_contact
+#: model:ir.model.fields,help:ssi_connector_chatwoot_contact.field_chatwoot_contact_inbox__chatwoot_id
+msgid "Source ID returned by Chatwoot for this contact and inbox"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_contact
