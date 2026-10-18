@@ -21,11 +21,22 @@ msgid "Already exported."
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_account_invoice_send__send_via
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_account_tour_upload_bill__send_via
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_mail_compose_message__send_via
+msgid ""
+"Channel used to deliver the message to the recipients added in this "
+"composer. Email keeps the standard behavior; Chatwoot sends the message and "
+"its attachments through a Chatwoot inbox."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
 #: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__odoo_id
 msgid "Chatter notification sent through Chatwoot"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__mail_compose_message__send_via__chatwoot
 #: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__mail_notification__notification_type__chatwoot
 msgid "Chatwoot"
 msgstr ""
@@ -52,7 +63,10 @@ msgid "Chatwoot Conversation ID"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_account_invoice_send__chatwoot_inbox_id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_account_tour_upload_bill__chatwoot_inbox_id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_res_partner__chatwoot_inbox_id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_compose_message__chatwoot_inbox_id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__chatwoot_inbox_id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users__chatwoot_inbox_id
 msgid "Chatwoot Inbox"
@@ -104,6 +118,16 @@ msgstr ""
 msgid ""
 "Chatwoot inbox that delivers the chatter notifications of this user when the"
 " notification policy is Handle by Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_account_invoice_send__chatwoot_inbox_id
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_account_tour_upload_bill__chatwoot_inbox_id
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_mail_compose_message__chatwoot_inbox_id
+msgid ""
+"Chatwoot inbox that delivers the message. Required when the message is sent "
+"via Chatwoot; it takes precedence over the inbox preference of each "
+"recipient."
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
@@ -161,6 +185,7 @@ msgstr ""
 #. module: ssi_connector_chatwoot_message
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__display_name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__display_name
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_compose_message__display_name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__display_name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_thread__display_name
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__display_name
@@ -169,8 +194,18 @@ msgid "Display Name"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__mail_compose_message__send_via__email
+msgid "Email"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
 #: model:ir.model,name:ssi_connector_chatwoot_message.model_mail_thread
 msgid "Email Thread"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_mail_compose_message
+msgid "Email composition wizard"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
@@ -186,6 +221,7 @@ msgstr ""
 #. module: ssi_connector_chatwoot_message
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_compose_message__id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_thread__id
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__id
@@ -221,6 +257,7 @@ msgstr ""
 #. module: ssi_connector_chatwoot_message
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation____last_update
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification____last_update
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_compose_message____last_update
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification____last_update
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_thread____last_update
 #: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner____last_update
@@ -286,6 +323,13 @@ msgid ""
 "Policy on how to handle Chatter notifications:\n"
 "- Handle by Emails: notifications are sent to your email address\n"
 "- Handle in Odoo: notifications appear in your Odoo Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_account_invoice_send__send_via
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_account_tour_upload_bill__send_via
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_compose_message__send_via
+msgid "Send Via"
 msgstr ""
 
 #. module: ssi_connector_chatwoot_message
