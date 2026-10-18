@@ -3,12 +3,34 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
 
     var tour = require("web_tour.tour");
 
-    // The Contacts menu is provided by the optional Contacts app, which is
-    // not a dependency of this module and is therefore not installed in the
-    // test database. The tours open the very same partner list action
-    // through its URL (action XML ID, list view) instead of through the menu
-    // (Flow 1 of the IK).
-    var PARTNER_LIST_URL = "/web#action=base.action_partner_form&view_type=list";
+    // Shared opening steps -- Flow 1 of the base IK (ssi_partner
+    // docs/res_partner/01-create.md) and of docs/res_partner/02-force-export.md:
+    // "Open the Contacts > Contacts menu." The Contacts app lands on the kanban
+    // view of the Contacts action.
+    function openContactsMenuSteps() {
+        return [
+            tour.stepUtils.showAppsMenuItem(),
+            {
+                content: "Open the Contacts app",
+                trigger: '.o_app[data-menu-xmlid="contacts.menu_contacts"]',
+            },
+            {
+                content: "Open the Contacts menu",
+                trigger:
+                    ".o_menu_sections " +
+                    '[data-menu-xmlid="contacts.res_partner_menu_contacts"]',
+            },
+            {
+                // Gate: wait for the TARGET action, not the app landing view.
+                content: "Contacts is displayed",
+                trigger: ".o_control_panel .breadcrumb-item.active:contains(Contacts)",
+                extra_trigger: ".o_kanban_view",
+                run: function () {
+                    // Assertion only; do not trigger the default click action.
+                },
+            },
+        ];
+    }
 
     function openChatwootTabSteps() {
         return [
@@ -33,22 +55,16 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
         "ssi_connector_chatwoot_contact_res_partner_create",
         {
             test: true,
-            url: PARTNER_LIST_URL,
+            url: "/web",
         },
         [].concat(
+            openContactsMenuSteps(),
             [
-                {
-                    content: "Partner list is displayed",
-                    trigger: ".o_list_view",
-                    run: function () {
-                        // Assertion only; do not trigger the default click action.
-                    },
-                },
                 // -- Flow 2 - Click the New button
                 {
                     content: "Click New",
-                    trigger: ".o_list_button_add",
-                    extra_trigger: ".o_list_view",
+                    trigger: ".o_kanban_button_new",
+                    extra_trigger: ".o_kanban_view",
                 },
                 {
                     content: "Form is open in edit mode",
@@ -60,7 +76,9 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
                 // -- Flow 3 - Fill in the required fields
                 {
                     content: "Fill in Name",
-                    trigger: ".o_field_widget[name='name']",
+                    // The name widget may be replaced by an installed module
+                    // (partner_autocomplete): target the <input> in the title.
+                    trigger: ".o_form_view .oe_title h1 input",
                     extra_trigger: ".o_form_view.o_form_editable",
                     run: "text TOUR Chatwoot Created Partner",
                 },
@@ -109,16 +127,16 @@ odoo.define("ssi_connector_chatwoot_contact.res_partner_tour", function (require
         "ssi_connector_chatwoot_contact_res_partner_force_export",
         {
             test: true,
-            url: PARTNER_LIST_URL,
+            url: "/web",
         },
         [].concat(
+            openContactsMenuSteps(),
             [
                 // -- Flow 2 - Find and open the partner to export
                 {
                     content: "Open the partner",
-                    trigger:
-                        ".o_data_row:contains(TOUR Chatwoot Force Partner) .o_data_cell:first",
-                    extra_trigger: ".o_list_view",
+                    trigger: ".o_kanban_record:contains(TOUR Chatwoot Force Partner)",
+                    extra_trigger: ".o_kanban_view",
                 },
                 {
                     content: "Form is open",

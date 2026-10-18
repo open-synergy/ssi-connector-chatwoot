@@ -4,10 +4,6 @@
 # HttpSavepointCase, not HttpCase: HttpCase has no ``cls.env`` in 14.0.
 from odoo.tests import HttpSavepointCase, tagged
 
-# The Contacts menu belongs to an app that is not installed in the test
-# database, so the tours open the partner list action through its URL.
-PARTNER_LIST_URL = "/web#action=base.action_partner_form&view_type=list"
-
 
 @tagged("post_install", "-at_install")
 class TestUiResPartner(HttpSavepointCase):
@@ -38,7 +34,7 @@ class TestUiResPartner(HttpSavepointCase):
         IK: docs/res_partner/01-create.md
         """
         self.start_tour(
-            PARTNER_LIST_URL,
+            "/web",
             "ssi_connector_chatwoot_contact_res_partner_create",
             login="admin",
         )
@@ -49,7 +45,7 @@ class TestUiResPartner(HttpSavepointCase):
         IK: docs/res_partner/02-force-export.md
         """
         self.start_tour(
-            PARTNER_LIST_URL,
+            "/web",
             "ssi_connector_chatwoot_contact_res_partner_force_export",
             login="admin",
         )

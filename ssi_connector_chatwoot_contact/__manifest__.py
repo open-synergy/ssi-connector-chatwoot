@@ -10,6 +10,7 @@
     "license": "AGPL-3",
     "depends": [
         "ssi_connector_chatwoot",
+        "ssi_partner",
         "queue_job",
         "web_tour",
     ],
