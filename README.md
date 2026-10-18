@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_connector_chatwoot](ssi_connector_chatwoot/) | 14.0.2.2.0 |  | Chatwoot Connector
 [ssi_connector_chatwoot_contact](ssi_connector_chatwoot_contact/) | 14.0.2.1.0 |  | Chatwoot Connector - Contact
+[ssi_connector_chatwoot_message](ssi_connector_chatwoot_message/) | 14.0.1.0.1 |  | Chatwoot Connector - Message
 
 [//]: # (end addons)
 

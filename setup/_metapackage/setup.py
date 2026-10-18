@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo14-addon-ssi_connector_chatwoot',
         'odoo14-addon-ssi_connector_chatwoot_contact',
+        'odoo14-addon-ssi_connector_chatwoot_message',
     ],
     classifiers=[
         'Programming Language :: Python',
