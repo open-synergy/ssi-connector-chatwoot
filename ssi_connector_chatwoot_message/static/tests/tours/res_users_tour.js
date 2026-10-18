@@ -48,11 +48,13 @@ odoo.define("ssi_connector_chatwoot_message.res_users_tour", function (require) 
                 content: "Pick the Chatwoot inbox",
                 trigger:
                     ".ui-autocomplete .ui-menu-item a:contains(TOUR Chatwoot Message Inbox)",
+                // The autocomplete list is appended to <body>, outside the modal.
+                in_modal: false,
             },
             // -- Flow 4 - Click Save
             {
                 content: "Save the preferences",
-                trigger: ".modal-footer .o_form_button_save",
+                trigger: ".modal-footer button[name='preference_save']",
             },
             // -- Post-Condition - the dialog is closed
             {
