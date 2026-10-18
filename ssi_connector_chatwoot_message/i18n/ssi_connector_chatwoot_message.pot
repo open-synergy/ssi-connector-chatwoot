@@ -1,0 +1,294 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ssi_connector_chatwoot_message
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ssi_connector_chatwoot_message
+#: code:addons/ssi_connector_chatwoot_message/components/conversation.py:0
+#: code:addons/ssi_connector_chatwoot_message/components/mail_notification.py:0
+#, python-format
+msgid "Already exported."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__odoo_id
+msgid "Chatter notification sent through Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__mail_notification__notification_type__chatwoot
+msgid "Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__backend_id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__backend_id
+msgid "Chatwoot Backend"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__chatwoot_bind_ids
+msgid "Chatwoot Bindings"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_chatwoot_conversation
+msgid "Chatwoot Conversation Binding"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__chatwoot_id
+msgid "Chatwoot Conversation ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_res_partner__chatwoot_inbox_id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__chatwoot_inbox_id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users__chatwoot_inbox_id
+msgid "Chatwoot Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_chatwoot_mail_notification
+msgid "Chatwoot Message Binding"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__chatwoot_id
+msgid "Chatwoot Message ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model_terms:ir.ui.view,arch_db:ssi_connector_chatwoot_message.view_partner_form_chatwoot_message
+msgid "Chatwoot Notification"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__mail_notification__failure_type__chatwoot_server
+msgid "Chatwoot Server Error"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_conversation__backend_id
+msgid "Chatwoot backend of the contact inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__backend_id
+msgid "Chatwoot backend of the inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__conversation_id
+msgid "Chatwoot conversation the message was posted in"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_res_partner__chatwoot_inbox_id
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_res_partner__chatwoot_inbox_id
+msgid "Chatwoot inbox that delivers the chatter notifications of this partner"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_res_users__chatwoot_inbox_id
+msgid ""
+"Chatwoot inbox that delivers the chatter notifications of this user when the"
+" notification policy is Handle by Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__inbox_id
+msgid "Chatwoot inbox the message is sent through"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_mail_notification__chatwoot_bind_ids
+msgid "Chatwoot message bindings of this notification"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__contact_inbox_id
+msgid "Contact Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_conversation__contact_inbox_id
+msgid "Contact inbox binding this conversation belongs to"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__conversation_id
+msgid "Conversation"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__create_uid
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__create_date
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_conversation__sync_date
+msgid "Date of the last export of this conversation"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__sync_date
+msgid "Date of the last export of this message"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__display_name
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__display_name
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__display_name
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_thread__display_name
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__display_name
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_mail_thread
+msgid "Email Thread"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__failure_type
+msgid "Failure type"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__res_users__notification_type__chatwoot
+msgid "Handle by Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_thread__id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_conversation__chatwoot_id
+msgid "Identifier of the conversation in Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__chatwoot_id
+msgid "Identifier of the message in Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_chatwoot_res_partner__chatwoot_notify
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_res_partner__chatwoot_notify
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_res_users__chatwoot_notify
+msgid ""
+"If enabled, chatter notifications of this partner are sent through Chatwoot "
+"instead of email. Does not apply to internal users, who use their own "
+"notification policy."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__inbox_id
+msgid "Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation____last_update
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification____last_update
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification____last_update
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_thread____last_update
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner____last_update
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__sync_date
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__sync_date
+msgid "Last Synchronization"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__write_uid
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_conversation__write_date
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_mail_notification
+msgid "Message Notifications"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields.selection,name:ssi_connector_chatwoot_message.selection__mail_notification__failure_type__chatwoot_inbox
+msgid "No Chatwoot Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_mail_notification__odoo_id
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users__notification_type
+msgid "Notification"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_mail_notification__notification_type
+msgid "Notification Type"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: code:addons/ssi_connector_chatwoot_message/components/mail_notification.py:0
+#, python-format
+msgid "Notification marked as exception."
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_chatwoot_res_partner__chatwoot_notify
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_partner__chatwoot_notify
+#: model:ir.model.fields,field_description:ssi_connector_chatwoot_message.field_res_users__chatwoot_notify
+msgid "Notify via Chatwoot"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model.fields,help:ssi_connector_chatwoot_message.field_res_users__notification_type
+msgid ""
+"Policy on how to handle Chatter notifications:\n"
+"- Handle by Emails: notifications are sent to your email address\n"
+"- Handle in Odoo: notifications appear in your Odoo Inbox"
+msgstr ""
+
+#. module: ssi_connector_chatwoot_message
+#: model:ir.model,name:ssi_connector_chatwoot_message.model_res_users
+msgid "Users"
+msgstr ""
