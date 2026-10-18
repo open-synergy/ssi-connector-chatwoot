@@ -29,7 +29,12 @@ class TestUiMailComposeMessage(HttpSavepointCase):
                 "allow_outgoing": True,
             }
         )
-        cls.env["res.partner"].create({"name": "TOUR Chatwoot Compose Document"})
+        cls.env["res.partner"].create(
+            {
+                "name": "TOUR Chatwoot Compose Document",
+                "email": "compose.document@example.com",
+            }
+        )
         cls.env["res.partner"].create(
             {
                 "name": "TOUR Chatwoot Compose Recipient",

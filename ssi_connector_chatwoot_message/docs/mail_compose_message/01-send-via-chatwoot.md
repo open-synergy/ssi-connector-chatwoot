@@ -7,7 +7,8 @@
 
 ## Pre-Condition
 
-- **Record:** The contact that receives the message exists.
+- **Record:** The contact that receives the message exists and has an email address.
+  Without one, Odoo asks you to complete the contact before the composer can be used.
 - **Data:** At least one Chatwoot inbox exists with **Allow Outgoing Messages** enabled
   (see the work instructions of `ssi_connector_chatwoot`).
 - **Access:** User can edit contacts and post messages in the chatter.
